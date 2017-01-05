@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `charts` (
+CREATE TABLE IF NOT EXISTS `phpvms_charts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `icao` varchar(5) NOT NULL,
   `name` text NOT NULL,
@@ -8,5 +8,4 @@ CREATE TABLE IF NOT EXISTS `charts` (
   `dateadded` date NOT NULL,
   `dateupdated` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;

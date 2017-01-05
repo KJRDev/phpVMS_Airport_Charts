@@ -1,48 +1,45 @@
 <?php
-
 /**
 Module Completed By Vansers
 
 This module is only use for phpVMS (www.phpvms.net) - (A Virtual Airline Admin Software)
 
 @Created By Vansers
-@Copyrighted @ 2011
+@Copyrighted @ 2016
 @Under CC 3.0
 @http://creativecommons.org/licenses/by-nc-sa/3.0/
 **/
 
 // Version 1.0 (September.30.11) - Module Created
 // Version 1.1 (October.07.11) - Added Add-On Navgation Button
+// Version 2.0 (January.05.17) - Updated for phpVMS 5.5.x
 
  
-class Charts extends CodonModule
-{
-	
-
+class Charts extends CodonModule {
 	public function index()
 	{
 		if(!Auth::LoggedIn()) {
 			$this->set('message', 'You must be logged in to access this feature!');
-			$this->render('core_error.tpl');
+			$this->show('core_error');
 			return;
 		};
 		
-		$this->set('title', Charts);
-		
+		$this->set('title', 'Charts');
 		$this->set('allairports', OperationsData::findAirport($where));
 
-		$this->render('charts/index.tpl');
+		$this->show('charts/index');
 	}
 	
 	public function viewcharts()
 	{
-        $icao = $_GET['icao'];
-        if(!$icao)
-        {$icao = DB::escape($this->post->icao);}
+        $icao = DB::escape($this->get->icao);
+        if(!$icao) {
+			$icao = DB::escape($this->post->icao);
+		}
 		
 		$this->set('title', $icao);
 		$this->set('allairports', OperationsData::findAirport($where));
-		$this->set('chart', ChartsData::getAirportCharts($icao));
-        $this->show('charts/charts_airport.tpl');
+		$this->set('chart', AirportChartsData::getAirportCharts($icao));
+        $this->show('charts/charts_airport');
 	}
 }

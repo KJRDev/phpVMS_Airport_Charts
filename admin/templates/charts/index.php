@@ -38,7 +38,7 @@ if(!$allairports) {
 		<tr>
 			<td width="21%" nowrap>
 				<div align="center">
-					<a href="viewcharts?icao=<?php echo $airport->icao; ?>"><?php echo $airport->icao; ?></a>
+					<a href="<?php echo SITE_URL; ?>/admin/indexphp/chartsadmin/viewcharts?icao=<?php echo $airport->icao; ?>"><?php echo $airport->icao; ?></a>
 				</div>
 			</td>
 			<td><div align="center"><?php echo $airport->name; ?></div></td>
